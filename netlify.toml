@@ -1,0 +1,16 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[edge_functions]]
+  path = "/*"
+  function = "basic-auth"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Basic-Auth = "phantom:lounge2025"
