@@ -46,7 +46,7 @@ export const FAQSection: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-4 animate-in fade-in duration-200">
+                  <div className="px-5 sm:px-6 pb-6 text-sm sm:text-base text-slate-200 leading-relaxed border-t border-white/5 pt-4 animate-in fade-in duration-200 font-sans">
                     {faq.answer}
                   </div>
                 )}

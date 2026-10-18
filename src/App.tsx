@@ -48,12 +48,10 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-obsidian-950 text-slate-100 flex flex-col font-sans selection:bg-mauri-gold selection:text-obsidian-950">
-      {/* Top Floating Glass Navigation */}
+    <div className="min-h-screen bg-obsidian-950 text-slate-200 flex flex-col font-sans selection:bg-mauri-gold selection:text-obsidian-950">
+      {/* Modern Compact Floating Capsule Dock */}
       <Navbar
         onOpenBooking={handleOpenBooking}
-        onOpenAuth={() => setIsAuthModalOpen(true)}
-        isUnlocked={isUnlocked}
         selectedCity={selectedCity}
         onSelectCity={setSelectedCity}
       />

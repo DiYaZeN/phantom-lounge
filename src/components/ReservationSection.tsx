@@ -227,7 +227,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
               {/* Step 3: Date, Time & Guests */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
                 <div>
-                  <label className="block text-xs text-slate-300 font-medium mb-1.5 flex items-center gap-1.5">
+                  <label className="block text-xs sm:text-sm text-slate-200 font-medium mb-1.5 flex items-center gap-1.5 font-sans">
                     <Calendar className="w-3.5 h-3.5 text-mauri-gold" /> Date
                   </label>
                   <input
@@ -235,22 +235,22 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                     required
                     value={formData.date}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl glass-input text-xs text-white"
+                    className="w-full px-4 py-3 rounded-xl glass-input text-sm text-white font-sans [color-scheme:dark]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs text-slate-300 font-medium mb-1.5 flex items-center gap-1.5">
+                  <label className="block text-xs sm:text-sm text-slate-200 font-medium mb-1.5 flex items-center gap-1.5 font-sans">
                     <Clock className="w-3.5 h-3.5 text-mauri-gold" /> Time Slot
                   </label>
                   <select
                     value={formData.time}
                     onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl glass-input text-xs text-white bg-obsidian-950"
+                    className="w-full px-4 py-3 rounded-xl glass-input text-sm text-white bg-obsidian-950 font-sans cursor-pointer"
                   >
                     {['16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00', '01:00'].map(
                       (t) => (
-                        <option key={t} value={t} className="bg-obsidian-950 text-white">
+                        <option key={t} value={t} className="bg-obsidian-950 text-white font-sans">
                           {t}
                         </option>
                       )
@@ -259,16 +259,16 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs text-slate-300 font-medium mb-1.5 flex items-center gap-1.5">
+                  <label className="block text-xs sm:text-sm text-slate-200 font-medium mb-1.5 flex items-center gap-1.5 font-sans">
                     <Users className="w-3.5 h-3.5 text-mauri-gold" /> Guests
                   </label>
                   <select
                     value={formData.guests}
                     onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl glass-input text-xs text-white bg-obsidian-950"
+                    className="w-full px-4 py-3 rounded-xl glass-input text-sm text-white bg-obsidian-950 font-sans cursor-pointer"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8, '9+'].map((num) => (
-                      <option key={num} value={num} className="bg-obsidian-950 text-white">
+                      <option key={num} value={num} className="bg-obsidian-950 text-white font-sans">
                         {num} {num === 1 ? 'Guest' : 'Guests'}
                       </option>
                     ))}
@@ -279,45 +279,45 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
               {/* Step 4: Contact Information */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 <div>
-                  <label className="block text-xs text-slate-300 font-medium mb-1.5">Full Name</label>
+                  <label className="block text-xs sm:text-sm text-slate-200 font-medium mb-1.5 font-sans">Full Name</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Samira Khan"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl glass-input text-xs text-white placeholder-slate-500"
+                    className="w-full px-4 py-3 rounded-xl glass-input text-sm text-white placeholder-slate-400 font-sans"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs text-slate-300 font-medium mb-1.5">Phone Number (For SMS Confirmation)</label>
+                  <label className="block text-xs sm:text-sm text-slate-200 font-medium mb-1.5 font-sans">Phone Number (For SMS Confirmation)</label>
                   <input
                     type="tel"
                     required
                     placeholder="07459 199723"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl glass-input text-xs text-white placeholder-slate-500"
+                    className="w-full px-4 py-3 rounded-xl glass-input text-sm text-white placeholder-slate-400 font-sans"
                   />
                 </div>
               </div>
 
               <div className="mb-6">
-                <label className="block text-xs text-slate-300 font-medium mb-1.5">Email Address</label>
+                <label className="block text-xs sm:text-sm text-slate-200 font-medium mb-1.5 font-sans">Email Address</label>
                 <input
                   type="email"
                   required
                   placeholder="your.email@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl glass-input text-xs text-white placeholder-slate-500"
+                  className="w-full px-4 py-3 rounded-xl glass-input text-sm text-white placeholder-slate-400 font-sans"
                 />
               </div>
 
               {/* Preloaded Flavor / Special Requests */}
               <div className="mb-8">
-                <label className="block text-xs text-slate-300 font-medium mb-1.5">
+                <label className="block text-xs sm:text-sm text-slate-200 font-medium mb-1.5 font-sans">
                   Flavor Pre-Selection or Special Requests
                 </label>
                 <textarea
@@ -325,7 +325,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                   placeholder="e.g. Birthday celebration, want extra ice tips, specific tobacco mix..."
                   value={formData.specialNotes}
                   onChange={(e) => setFormData({ ...formData, specialNotes: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl glass-input text-xs text-white placeholder-slate-500"
+                  className="w-full px-4 py-3 rounded-xl glass-input text-sm text-white placeholder-slate-400 font-sans resize-none"
                 />
               </div>
 

@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
+            <p className="text-sm text-slate-300 leading-relaxed max-w-sm font-sans">
               The United Kingdom's premier alcohol-free shisha sanctuary. Bringing together hand-crafted shisha blends, personal Ludo tournament boards, and royal hospitality across Leeds, Manchester, and Bradford.
             </p>
 
@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
             <h4 className="font-display font-bold text-xs uppercase tracking-widest text-white">
               Explore
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-sm font-sans">
               <li>
                 <a href="#menu" className="hover:text-mauri-gold transition-colors">
                   Sensory Menu
@@ -102,24 +102,24 @@ export const Footer: React.FC = () => {
             <h4 className="font-display font-bold text-xs uppercase tracking-widest text-white">
               Our Locations
             </h4>
-            <div className="space-y-3 text-xs">
+            <div className="space-y-3 text-sm font-sans">
               {LOCATIONS.map((loc) => (
-                <div key={loc.id} className="p-2.5 rounded-xl bg-white/5 border border-white/5">
+                <div key={loc.id} className="p-3 rounded-xl bg-white/5 border border-white/5">
                   <div className="flex items-center justify-between text-white font-semibold">
                     <span>{loc.city} Lounge</span>
                     <span className="text-[10px] text-mauri-gold uppercase font-mono">{loc.isFlagship ? 'Flagship' : 'Premier'}</span>
                   </div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">{loc.address}</div>
+                  <div className="text-xs text-slate-300 mt-1">{loc.address}</div>
                 </div>
               ))}
-              <div className="pt-1 flex items-center gap-2 text-xs text-white">
-                <Phone className="w-3.5 h-3.5 text-mauri-gold" />
-                <a href="tel:07459199723" className="hover:text-mauri-gold transition-colors">
+              <div className="pt-1 flex items-center gap-2 text-sm text-white font-sans">
+                <Phone className="w-4 h-4 text-mauri-gold" />
+                <a href="tel:07459199723" className="hover:text-mauri-gold transition-colors font-medium">
                   07459 199723
                 </a>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <Mail className="w-3.5 h-3.5 text-mauri-gold" />
+              <div className="flex items-center gap-2 text-sm text-slate-300 font-sans">
+                <Mail className="w-4 h-4 text-mauri-gold" />
                 <a href="mailto:info@phantomlounge.co.uk" className="hover:text-mauri-gold transition-colors">
                   info@phantomlounge.co.uk
                 </a>
@@ -132,7 +132,7 @@ export const Footer: React.FC = () => {
             <h4 className="font-display font-bold text-xs uppercase tracking-widest text-white">
               The Phantom Circle
             </h4>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed font-sans">
               Receive secret menu invites, weekend Ludo bracket releases, and seasonal tobacco flavor drops.
             </p>
 
@@ -144,7 +144,7 @@ export const Footer: React.FC = () => {
                   placeholder="Enter your email address"
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="w-full pl-3.5 pr-10 py-2.5 rounded-xl glass-input text-xs text-white placeholder-slate-500"
+                  className="w-full pl-3.5 pr-10 py-3 rounded-xl glass-input text-sm text-white placeholder-slate-400 font-sans"
                 />
                 <button
                   type="submit"
@@ -166,10 +166,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-sans">
           <div className="flex items-center gap-2">
             <KoruIcon size={16} className="text-mauri-gold" />
-            <span>© 2025 Phantom Lounge UK. All rights reserved.</span>
+            <span>© 2026 Phantom Lounge UK. All rights reserved.</span>
           </div>
 
           <div className="flex items-center gap-6">

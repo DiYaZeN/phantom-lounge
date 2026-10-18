@@ -4,10 +4,12 @@
 
 @layer base {
   html {
-    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: #040406;
-    color: #f8fafc;
+    color: #e2e8f0;
     color-scheme: dark;
+    font-size: 16px;
+    line-height: 1.65;
   }
 
   /* Custom Luxury Scrollbar */

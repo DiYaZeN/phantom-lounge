@@ -47,7 +47,7 @@ export const TestimonialsSection: React.FC = () => {
                   <Quote className="w-5 h-5 text-mauri-gold/30 group-hover:text-mauri-gold/60 transition-colors" />
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed italic">
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed italic font-sans">
                   "{review.text}"
                 </p>
               </div>
@@ -59,7 +59,7 @@ export const TestimonialsSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <h4 className="text-xs font-display font-bold text-white">
+                    <h4 className="text-xs sm:text-sm font-display font-bold text-white">
                       {review.author}
                     </h4>
                     {review.verified && (
@@ -68,7 +68,7 @@ export const TestimonialsSection: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <span className="text-[10px] text-slate-400 font-sans">
+                  <span className="text-xs text-slate-400 font-sans">
                     {review.city} Patron • {review.date}
                   </span>
                 </div>

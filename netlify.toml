@@ -13,4 +13,8 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Basic-Auth = "phantom:lounge2025"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

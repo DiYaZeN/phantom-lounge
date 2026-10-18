@@ -25,9 +25,10 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Cinzel', 'Outfit', 'Inter', 'sans-serif'],
-        display: ['Cinzel Decorative', 'Cinzel', 'serif'],
-        body: ['Outfit', 'Inter', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Outfit', 'Inter', 'sans-serif'],
+        display: ['"Cinzel Decorative"', 'Cinzel', 'serif'],
+        title: ['Cinzel', 'serif'],
+        body: ['"Plus Jakarta Sans"', 'Outfit', 'Inter', 'sans-serif'],
       },
       keyframes: {
         float: {
