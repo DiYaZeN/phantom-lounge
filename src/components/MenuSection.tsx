@@ -55,7 +55,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
           <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mt-2">
             The Phantom <span className="text-gold-gradient">Sensory Menu</span>
           </h2>
-          <p className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="mt-4 text-slate-200 text-sm sm:text-base leading-relaxed font-sans">
             From our hand-picked golden leaf tobacco blends to steaming saffron Karak and dry-ice mocktails, every creation is formulated for elevated comfort.
           </p>
         </div>
@@ -73,7 +73,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                   className={`px-4 py-2.5 rounded-full text-xs font-display uppercase tracking-wider whitespace-nowrap transition-all duration-300 flex items-center gap-2 ${
                     activeCategory === cat.id
                       ? 'bg-gradient-to-r from-mauri-gold to-mauri-amber text-obsidian-950 font-bold shadow-neon-gold'
-                      : 'glass-pill text-slate-300 hover:text-white hover:border-white/20'
+                      : 'glass-pill text-slate-200 hover:text-white hover:border-white/30'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -85,13 +85,13 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
 
           {/* Search Input */}
           <div className="relative w-full md:w-72">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-mauri-gold/80" />
             <input
               type="text"
               placeholder="Search flavors, drinks, tea..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-full glass-input text-xs text-white placeholder-slate-500 font-sans"
+              className="w-full pl-10 pr-4 py-2.5 rounded-full glass-input text-xs sm:text-sm text-white placeholder-slate-400 font-sans focus:border-mauri-gold/50"
             />
           </div>
         </div>
@@ -102,7 +102,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
             <div
               key={item.id}
               onClick={() => setSelectedItemModal(item)}
-              className="group glass-card rounded-3xl overflow-hidden border border-white/5 cursor-pointer flex flex-col justify-between relative"
+              className="group glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-white/25 cursor-pointer flex flex-col justify-between relative transition-all duration-300 hover:-translate-y-1"
             >
               <MauriCornerFiligree position="top-left" />
               <MauriCornerFiligree position="top-right" />
@@ -124,7 +124,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
 
                 {/* Feature / Bestseller Badge */}
                 {item.badge && (
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-mauri-pounamu/90 text-obsidian-950 font-display font-extrabold text-[10px] uppercase tracking-wider">
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-mauri-pounamu/90 text-obsidian-950 font-display font-extrabold text-[10px] uppercase tracking-wider shadow-sm">
                     {item.badge}
                   </div>
                 )}
@@ -136,13 +136,13 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                   <h3 className="text-lg font-display font-bold text-white group-hover:text-mauri-gold transition-colors">
                     {item.name}
                   </h3>
-                  <p className="mt-2 text-xs text-slate-300 leading-relaxed line-clamp-2">
+                  <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans line-clamp-2">
                     {item.description}
                   </p>
 
                   {/* Shisha specs preview if applicable */}
                   {item.specs && (
-                    <div className="mt-3 flex items-center gap-3 text-[11px] text-slate-400">
+                    <div className="mt-3 flex items-center gap-3 text-xs text-slate-300 font-sans">
                       <span>Sweetness: {item.specs.sweetness}/5</span>
                       <span>•</span>
                       <span>Frost: {item.specs.coolness}/5</span>
@@ -157,7 +157,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                       {item.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/5 text-slate-400 border border-white/5"
+                          className="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/10 text-slate-200 border border-white/10 font-sans"
                         >
                           {tag}
                         </span>
@@ -167,8 +167,8 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
                 </div>
 
                 {/* Card Footer: Pre-Order / Booking action */}
-                <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-xs font-display text-slate-400 group-hover:text-white transition-colors">
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-xs font-display text-slate-300 group-hover:text-white transition-colors">
                     View Details →
                   </span>
 
@@ -240,21 +240,21 @@ export const MenuSection: React.FC<MenuSectionProps> = ({
               {selectedItemModal.name}
             </h3>
 
-            <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-sans">
               {selectedItemModal.description}
             </p>
 
             {selectedItemModal.specs && (
-              <div className="mt-4 p-4 rounded-xl bg-obsidian-950/60 border border-white/5 space-y-2">
-                <div className="flex justify-between text-xs text-slate-300">
+              <div className="mt-4 p-4 rounded-xl bg-obsidian-950/80 border border-white/10 space-y-2">
+                <div className="flex justify-between text-xs sm:text-sm text-slate-200 font-sans">
                   <span>Sweetness Level:</span>
                   <span className="font-semibold text-mauri-gold">{selectedItemModal.specs.sweetness} / 5</span>
                 </div>
-                <div className="flex justify-between text-xs text-slate-300">
+                <div className="flex justify-between text-xs sm:text-sm text-slate-200 font-sans">
                   <span>Coolness Frost:</span>
                   <span className="font-semibold text-cyan-400">{selectedItemModal.specs.coolness} / 5</span>
                 </div>
-                <div className="flex justify-between text-xs text-slate-300">
+                <div className="flex justify-between text-xs sm:text-sm text-slate-200 font-sans">
                   <span>Smoke Cloud Texture:</span>
                   <span className="font-semibold text-white">{selectedItemModal.specs.smokeDensity}</span>
                 </div>

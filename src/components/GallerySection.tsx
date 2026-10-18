@@ -20,19 +20,30 @@ export const GallerySection: React.FC = () => {
     (photo) => filter === 'all' || photo.category === filter
   );
 
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handlePrev = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (activePhotoIndex !== null) {
       setActivePhotoIndex(activePhotoIndex > 0 ? activePhotoIndex - 1 : filteredPhotos.length - 1);
     }
   };
 
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (activePhotoIndex !== null) {
       setActivePhotoIndex(activePhotoIndex < filteredPhotos.length - 1 ? activePhotoIndex + 1 : 0);
     }
   };
+
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (activePhotoIndex === null) return;
+      if (e.key === 'Escape') setActivePhotoIndex(null);
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activePhotoIndex, filteredPhotos.length]);
 
   return (
     <section id="gallery" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-obsidian-900/40">
@@ -46,7 +57,7 @@ export const GallerySection: React.FC = () => {
           <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mt-2">
             The Ambiance <span className="text-gold-gradient">Gallery</span>
           </h2>
-          <p className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="mt-4 text-slate-200 text-sm sm:text-base leading-relaxed font-sans">
             Glimpse into the warmth, moody neon architecture, and captivating social atmosphere that define every evening at Phantom Lounge.
           </p>
         </div>
@@ -62,8 +73,8 @@ export const GallerySection: React.FC = () => {
               }}
               className={`px-4 py-2 rounded-full text-xs font-display uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
                 filter === tab.id
-                  ? 'bg-mauri-gold text-obsidian-950 font-bold shadow-neon-gold'
-                  : 'glass-pill text-slate-400 hover:text-white'
+                  ? 'bg-gradient-to-r from-mauri-gold to-mauri-amber text-obsidian-950 font-bold shadow-neon-gold'
+                  : 'glass-pill text-slate-200 hover:text-white hover:border-white/30'
               }`}
             >
               {tab.label}
@@ -77,7 +88,7 @@ export const GallerySection: React.FC = () => {
             <div
               key={photo.id}
               onClick={() => setActivePhotoIndex(index)}
-              className="group relative rounded-3xl overflow-hidden glass-card cursor-pointer border border-white/5 aspect-[4/3] sm:aspect-square flex flex-col justify-end p-5"
+              className="group relative rounded-3xl overflow-hidden glass-card cursor-pointer border border-white/10 hover:border-mauri-gold/40 transition-all duration-300 hover:-translate-y-1 aspect-[4/3] sm:aspect-square flex flex-col justify-end p-5"
             >
               <img
                 src={photo.src}
@@ -163,7 +174,7 @@ export const GallerySection: React.FC = () => {
                   {filteredPhotos[activePhotoIndex].title}
                 </h3>
               </div>
-              <span className="text-xs text-slate-400 font-sans">
+              <span className="text-xs text-slate-300 font-sans">
                 {activePhotoIndex + 1} / {filteredPhotos.length}
               </span>
             </div>

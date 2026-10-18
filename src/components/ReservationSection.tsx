@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { LOCATIONS } from '../data/phantomData';
 import { MauriDivider, MauriCornerFiligree, KoruIcon } from './MauriPatterns';
-import { Calendar, Clock, Users, Flame, CheckCircle2, Sparkles, MapPin, Phone, Mail, Check, PartyPopper } from 'lucide-react';
+import { Calendar, Clock, Users, Flame, CheckCircle2, Sparkles, MapPin, Phone, Mail, Check, PartyPopper, Copy } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface ReservationSectionProps {
@@ -30,6 +30,7 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [bookingCode, setBookingCode] = useState('');
+  const [copiedCode, setCopiedCode] = useState(false);
 
   useEffect(() => {
     if (preloadedFlavorMix && !formData.specialNotes.includes(preloadedFlavorMix)) {
@@ -97,38 +98,62 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
             </h3>
 
             {/* Booking Details Ticket */}
-            <div className="my-6 p-5 rounded-2xl bg-obsidian-950/80 border border-white/10 text-left space-y-3">
+            <div className="my-6 p-5 rounded-2xl bg-obsidian-950/90 border border-white/10 text-left space-y-3.5 shadow-xl">
               <div className="flex justify-between items-center pb-3 border-b border-white/10">
-                <span className="text-xs text-slate-400 font-sans">Booking Reference:</span>
-                <span className="font-mono font-bold text-mauri-gold text-sm tracking-wider">{bookingCode}</span>
-              </div>
-              <div className="grid grid-cols-2 gap-3 text-xs text-slate-300">
                 <div>
-                  <span className="text-slate-500 block">Guest:</span>
+                  <span className="text-xs text-slate-300 font-sans block">Booking Reference:</span>
+                  <span className="font-mono font-bold text-mauri-gold text-base tracking-wider">{bookingCode}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(bookingCode);
+                    setCopiedCode(true);
+                    setTimeout(() => setCopiedCode(false), 2000);
+                  }}
+                  className="px-3 py-1.5 rounded-lg glass-pill text-xs font-semibold text-slate-200 hover:text-white flex items-center gap-1.5 border border-white/10 hover:border-mauri-gold/40 transition-colors"
+                  title="Copy Reference Code"
+                >
+                  {copiedCode ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                      <span className="text-emerald-400">Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5 text-mauri-gold" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+              <div className="grid grid-cols-2 gap-3 text-xs sm:text-sm text-slate-200 font-sans">
+                <div>
+                  <span className="text-slate-400 block text-xs">Guest:</span>
                   <span className="font-medium text-white">{formData.name}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 block">Venue:</span>
+                  <span className="text-slate-400 block text-xs">Venue:</span>
                   <span className="font-medium text-white">{currentCityObj.city} Lounge</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 block">Date & Time:</span>
+                  <span className="text-slate-400 block text-xs">Date & Time:</span>
                   <span className="font-medium text-white">{formData.date} at {formData.time}</span>
                 </div>
                 <div>
-                  <span className="text-slate-500 block">Party Size:</span>
+                  <span className="text-slate-400 block text-xs">Party Size:</span>
                   <span className="font-medium text-white">{formData.guests} Guests</span>
                 </div>
               </div>
               {formData.specialNotes && (
-                <div className="pt-2 border-t border-white/5 text-xs text-mauri-amber">
-                  <span className="text-slate-500 block">Selected Recipe / Notes:</span>
-                  <span>{formData.specialNotes}</span>
+                <div className="pt-2.5 border-t border-white/10 text-xs sm:text-sm text-amber-300 font-sans">
+                  <span className="text-slate-400 block text-xs">Selected Recipe / Notes:</span>
+                  <span className="font-medium">{formData.specialNotes}</span>
                 </div>
               )}
             </div>
 
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
               A text confirmation has been dispatched. Please arrive within 15 minutes of your booking time. Free personal Ludo boards and coals will be ready.
             </p>
 
@@ -176,12 +201,12 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                       onClick={() => onSelectCity(loc.id)}
                       className={`p-3 sm:p-4 rounded-2xl border text-center transition-all ${
                         selectedCity === loc.id
-                          ? 'border-mauri-gold bg-mauri-gold/15 text-white shadow-glass-gold'
-                          : 'border-white/10 glass-pill text-slate-400 hover:text-white'
+                          ? 'border-mauri-gold bg-mauri-gold/20 text-white shadow-glass-gold scale-[1.01]'
+                          : 'border-white/10 glass-pill text-slate-300 hover:text-white hover:border-white/30'
                       }`}
                     >
                       <h4 className="font-display font-bold text-sm sm:text-base">{loc.city}</h4>
-                      <span className="text-[10px] text-slate-400 block mt-0.5 truncate hidden sm:block">
+                      <span className="text-[10px] sm:text-xs text-slate-300 block mt-0.5 truncate hidden sm:block font-sans">
                         {loc.hours.weekdays.split('–')[1]?.trim()}
                       </span>
                     </button>
@@ -206,17 +231,17 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
                       onClick={() => setFormData({ ...formData, experience: exp.id })}
                       className={`p-3.5 rounded-2xl border text-left transition-all ${
                         formData.experience === exp.id
-                          ? 'border-emerald-500 bg-emerald-500/10 text-white'
-                          : 'border-white/10 glass-pill text-slate-400 hover:text-white'
+                          ? 'border-emerald-500 bg-emerald-500/15 text-white shadow-glass-jade'
+                          : 'border-white/10 glass-pill text-slate-300 hover:text-white hover:border-white/30'
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className="font-display font-bold text-xs text-white">{exp.name}</span>
+                        <span className="font-display font-bold text-xs sm:text-sm text-white">{exp.name}</span>
                         {formData.experience === exp.id && (
                           <Check className="w-3.5 h-3.5 text-emerald-400" />
                         )}
                       </div>
-                      <span className="text-[11px] text-slate-400 block mt-1 leading-snug">
+                      <span className="text-xs text-slate-300 block mt-1 leading-snug font-sans">
                         {exp.desc}
                       </span>
                     </button>
@@ -317,6 +342,27 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
 
               {/* Preloaded Flavor / Special Requests */}
               <div className="mb-8">
+                {preloadedFlavorMix && (
+                  <div className="mb-3 p-3 rounded-xl bg-mauri-gold/15 border border-mauri-gold/40 flex items-center justify-between text-xs sm:text-sm">
+                    <span className="text-mauri-gold font-sans font-medium flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+                      <span>Loaded Item / Perk: <strong>{preloadedFlavorMix}</strong></span>
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onClearPreloadedMix();
+                        setFormData((prev) => ({
+                          ...prev,
+                          specialNotes: '',
+                        }));
+                      }}
+                      className="text-xs text-slate-300 hover:text-white underline font-sans ml-2 shrink-0"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                )}
                 <label className="block text-xs sm:text-sm text-slate-200 font-medium mb-1.5 font-sans">
                   Flavor Pre-Selection or Special Requests
                 </label>
@@ -341,18 +387,18 @@ export const ReservationSection: React.FC<ReservationSectionProps> = ({
 
             {/* Right Side: Lounge Perks & Immediate Callout */}
             <div className="lg:col-span-4 space-y-4">
-              <div className="glass-card rounded-3xl p-6 border border-white/5 space-y-4">
+              <div className="glass-card rounded-3xl p-6 border border-white/10 space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-mauri-gold/20 flex items-center justify-center text-mauri-gold">
                     <KoruIcon size={22} className="text-mauri-gold" />
                   </div>
                   <div>
                     <h4 className="text-sm font-display font-bold text-white">The Phantom Promise</h4>
-                    <span className="text-[11px] text-slate-400">Pure Hospitality Guarantee</span>
+                    <span className="text-xs text-slate-300 font-sans">Pure Hospitality Guarantee</span>
                   </div>
                 </div>
 
-                <div className="space-y-3 pt-2 text-xs text-slate-300 border-t border-white/5">
+                <div className="space-y-3 pt-2 text-xs sm:text-sm text-slate-200 border-t border-white/10 font-sans">
                   <div className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-mauri-pounamu shrink-0 mt-0.5" />
                     <span>Free personal Ludo board on every table</span>

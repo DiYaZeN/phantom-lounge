@@ -26,7 +26,7 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
           <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight mt-2">
             Visit Our <span className="text-gold-gradient">Sanctuaries</span>
           </h2>
-          <p className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="mt-4 text-slate-200 text-sm sm:text-base leading-relaxed font-sans">
             Three distinct atmospheres united by identical standards of excellence: lavish velvet booth seating, complimentary Ludo boards, and the UK’s most celebrated shisha craft.
           </p>
         </div>
@@ -40,8 +40,8 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                 key={loc.id}
                 className={`relative rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 group ${
                   isCurrent
-                    ? 'glass-panel border-mauri-gold/70 shadow-glass-gold scale-[1.02]'
-                    : 'glass-card border-white/5 hover:border-white/20'
+                    ? 'glass-panel border-mauri-gold/80 shadow-glass-gold scale-[1.02]'
+                    : 'glass-card border-white/10 hover:border-white/30'
                 }`}
               >
                 <MauriCornerFiligree position="top-left" />
@@ -50,7 +50,7 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                 <div>
                   {/* Top Badge */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-display uppercase tracking-widest font-bold bg-white/5 text-mauri-gold border border-white/10">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-display uppercase tracking-widest font-bold bg-white/10 text-mauri-gold border border-white/15">
                       {loc.isFlagship ? '★ Flagship Lounge' : 'Premier Lounge'}
                     </span>
 
@@ -65,11 +65,11 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                   <h3 className="text-2xl sm:text-3xl font-display font-bold text-white group-hover:text-mauri-gold transition-colors">
                     {loc.city}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1 font-medium font-sans">
+                  <p className="text-xs sm:text-sm text-slate-300 mt-1 font-medium font-sans">
                     {loc.tagline}
                   </p>
 
-                  <div className="my-6 space-y-3.5 text-xs text-slate-300 border-y border-white/5 py-5">
+                  <div className="my-6 space-y-3.5 text-xs sm:text-sm text-slate-200 border-y border-white/10 py-5 font-sans">
                     {/* Address */}
                     <div className="flex items-start gap-3">
                       <MapPin className="w-4 h-4 text-mauri-gold shrink-0 mt-0.5" />
@@ -83,7 +83,7 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
                       <Clock className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                       <div>
                         <div className="text-white">Weekdays: {loc.hours.weekdays}</div>
-                        <div className="text-slate-400">Weekends: {loc.hours.weekends}</div>
+                        <div className="text-slate-300">Weekends: {loc.hours.weekends}</div>
                       </div>
                     </div>
 
@@ -97,20 +97,20 @@ export const LocationsSection: React.FC<LocationsSectionProps> = ({
 
                     <div className="flex items-center gap-3">
                       <Mail className="w-4 h-4 text-purple-400 shrink-0" />
-                      <a href={`mailto:${loc.email}`} className="hover:text-mauri-gold transition-colors text-slate-300">
+                      <a href={`mailto:${loc.email}`} className="hover:text-mauri-gold transition-colors text-slate-200">
                         {loc.email}
                       </a>
                     </div>
                   </div>
 
                   {/* Amenities */}
-                  <div className="space-y-2 mb-8">
-                    <span className="text-[10px] uppercase font-display tracking-widest text-slate-400 font-semibold">
+                  <div className="space-y-2.5 mb-8">
+                    <span className="text-[10px] uppercase font-display tracking-widest text-slate-300 font-semibold">
                       Featured Amenities
                     </span>
                     <div className="grid grid-cols-2 gap-2">
                       {loc.features.map((feat) => (
-                        <div key={feat} className="flex items-center gap-1.5 text-[11px] text-slate-300">
+                        <div key={feat} className="flex items-center gap-1.5 text-xs text-slate-200 font-sans">
                           <CheckCircle className="w-3.5 h-3.5 text-mauri-pounamu shrink-0" />
                           <span className="truncate">{feat}</span>
                         </div>

@@ -20,7 +20,7 @@ export const TestimonialsSection: React.FC = () => {
           <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
             Loved Across <span className="text-gold-gradient">The North</span>
           </h2>
-          <p className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="mt-4 text-slate-200 text-sm sm:text-base leading-relaxed font-sans">
             Over hundreds of verified guest reviews celebrate the smooth shisha, cozy booths, and spirited Ludo battles across Leeds, Manchester & Bradford.
           </p>
         </div>
@@ -30,7 +30,7 @@ export const TestimonialsSection: React.FC = () => {
           {REVIEWS.map((review) => (
             <div
               key={review.id}
-              className="glass-card rounded-3xl p-6 sm:p-7 border border-white/5 flex flex-col justify-between relative group"
+              className="glass-card rounded-3xl p-6 sm:p-7 border border-white/10 hover:border-mauri-gold/40 transition-all duration-300 flex flex-col justify-between relative group"
             >
               <MauriCornerFiligree position="top-left" />
               <MauriCornerFiligree position="bottom-right" />
@@ -53,7 +53,7 @@ export const TestimonialsSection: React.FC = () => {
               </div>
 
               {/* Author Footer */}
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center gap-3">
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-3">
                 <div className="w-9 h-9 rounded-full bg-gradient-to-br from-mauri-gold to-mauri-amber text-obsidian-950 font-display font-bold text-xs flex items-center justify-center shadow-md">
                   {review.avatarLetter}
                 </div>
@@ -68,7 +68,7 @@ export const TestimonialsSection: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <span className="text-xs text-slate-400 font-sans">
+                  <span className="text-xs text-slate-300 font-sans">
                     {review.city} Patron • {review.date}
                   </span>
                 </div>

@@ -4,13 +4,16 @@ import { Dices, Trophy, Users, ShieldCheck, Sparkles, Gift } from 'lucide-react'
 
 interface LudoExperienceSectionProps {
   onOpenBooking: () => void;
+  onClaimPerk?: (perk: string) => void;
 }
 
 export const LudoExperienceSection: React.FC<LudoExperienceSectionProps> = ({
   onOpenBooking,
+  onClaimPerk,
 }) => {
   const [diceValue, setDiceValue] = useState<number>(6);
   const [isRolling, setIsRolling] = useState(false);
+  const [perkClaimed, setPerkClaimed] = useState(false);
   const [luckyReward, setLuckyReward] = useState<string | null>(
     'Rolled a 6! Perk unlocked: Complimentary Sub-Zero Ice Tip on your next visit!'
   );
@@ -18,6 +21,7 @@ export const LudoExperienceSection: React.FC<LudoExperienceSectionProps> = ({
   const rollDice = () => {
     if (isRolling) return;
     setIsRolling(true);
+    setPerkClaimed(false);
     let count = 0;
     const interval = setInterval(() => {
       setDiceValue(Math.floor(Math.random() * 6) + 1);
@@ -53,6 +57,15 @@ export const LudoExperienceSection: React.FC<LudoExperienceSectionProps> = ({
     }, 80);
   };
 
+  const handleApplyReward = () => {
+    if (luckyReward && onClaimPerk) {
+      onClaimPerk(luckyReward);
+      setPerkClaimed(true);
+    } else {
+      onOpenBooking();
+    }
+  };
+
   return (
     <section id="ludo-lounge" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-obsidian-950 overflow-hidden">
       <MauriDivider label="ANCIENT ROOTS • MODERN NIGHTLIFE" />
@@ -61,7 +74,7 @@ export const LudoExperienceSection: React.FC<LudoExperienceSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Side: Story & Information */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill border border-emerald-500/30 text-emerald-400 text-xs font-display tracking-widest uppercase">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill border border-emerald-500/40 text-emerald-400 text-xs font-display tracking-widest uppercase font-semibold">
               <Dices className="w-4 h-4" />
               <span>Complimentary At Every Booth</span>
             </div>
@@ -70,47 +83,47 @@ export const LudoExperienceSection: React.FC<LudoExperienceSectionProps> = ({
               The Famous <span className="text-jade-gradient">Phantom Ludo</span> Sanctuary
             </h2>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-sans">
               Nothing brings people together like the thrill of rolling a six. At Phantom Lounge, we designed every private velvet booth with its own custom-built, luxury wooden Ludo gaming board.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="glass-card rounded-2xl p-4 border border-white/5">
+              <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-emerald-500/30 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-mauri-pounamu/20 flex items-center justify-center text-mauri-pounamu mb-3">
                   <Users className="w-5 h-5" />
                 </div>
-                <h4 className="text-white font-display font-semibold text-sm">Social Connection</h4>
-                <p className="text-xs text-slate-400 mt-1">
+                <h4 className="text-white font-display font-semibold text-sm sm:text-base">Social Connection</h4>
+                <p className="text-xs sm:text-sm text-slate-300 mt-1 font-sans leading-relaxed">
                   Step away from phone screens and engage in electric, high-stakes friendly competition.
                 </p>
               </div>
 
-              <div className="glass-card rounded-2xl p-4 border border-white/5">
+              <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-mauri-gold/30 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-mauri-gold/20 flex items-center justify-center text-mauri-gold mb-3">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
-                <h4 className="text-white font-display font-semibold text-sm">100% Free Forever</h4>
-                <p className="text-xs text-slate-400 mt-1">
+                <h4 className="text-white font-display font-semibold text-sm sm:text-base">100% Free Forever</h4>
+                <p className="text-xs sm:text-sm text-slate-300 mt-1 font-sans leading-relaxed">
                   Zero hire fees or timers. The board is yours for the entire evening while you lounge.
                 </p>
               </div>
 
-              <div className="glass-card rounded-2xl p-4 border border-white/5">
+              <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-amber-500/30 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400 mb-3">
                   <Trophy className="w-5 h-5" />
                 </div>
-                <h4 className="text-white font-display font-semibold text-sm">Monthly Tournaments</h4>
-                <p className="text-xs text-slate-400 mt-1">
+                <h4 className="text-white font-display font-semibold text-sm sm:text-base">Monthly Tournaments</h4>
+                <p className="text-xs sm:text-sm text-slate-300 mt-1 font-sans leading-relaxed">
                   Participate in our friendly weekend city showdowns across Leeds, Manchester and Bradford.
                 </p>
               </div>
 
-              <div className="glass-card rounded-2xl p-4 border border-white/5">
+              <div className="glass-card rounded-2xl p-4 border border-white/10 hover:border-purple-500/30 transition-colors">
                 <div className="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-3">
                   <Sparkles className="w-5 h-5" />
                 </div>
-                <h4 className="text-white font-display font-semibold text-sm">Pure Chill Vibes</h4>
-                <p className="text-xs text-slate-400 mt-1">
+                <h4 className="text-white font-display font-semibold text-sm sm:text-base">Pure Chill Vibes</h4>
+                <p className="text-xs sm:text-sm text-slate-300 mt-1 font-sans leading-relaxed">
                   Pair your game moves with hot saffron Karak chai, waffle platters, and smooth shisha.
                 </p>
               </div>
@@ -215,17 +228,35 @@ export const LudoExperienceSection: React.FC<LudoExperienceSectionProps> = ({
 
               {/* Reward Box */}
               {luckyReward && (
-                <div className="mt-6 w-full p-4 rounded-2xl bg-obsidian-950/90 border border-emerald-500/30 text-left flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 shrink-0 mt-0.5">
-                    <Gift className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] uppercase font-display font-bold tracking-widest text-emerald-400">
-                      Show Waiter Upon Arrival
-                    </span>
-                    <p className="text-xs text-slate-200 font-medium mt-0.5 leading-snug">
-                      {luckyReward}
-                    </p>
+                <div className="mt-6 w-full p-4 rounded-2xl bg-obsidian-950/95 border border-emerald-500/40 text-left shadow-lg relative overflow-hidden group">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2.5 rounded-xl bg-emerald-500/20 text-emerald-400 shrink-0 mt-0.5 border border-emerald-500/30">
+                      <Gift className="w-5 h-5" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] uppercase font-display font-bold tracking-widest text-emerald-400">
+                          Exclusive Ludo Perk
+                        </span>
+                        <span className="text-[10px] text-slate-400 font-sans">Show Waiter or Pre-load</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-100 font-medium mt-1 leading-snug font-sans">
+                        {luckyReward}
+                      </p>
+
+                      <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+                        <span className="text-[11px] text-slate-400 font-sans">
+                          Valid for tonight's session
+                        </span>
+                        <button
+                          onClick={handleApplyReward}
+                          className="px-3.5 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500 text-emerald-300 hover:text-obsidian-950 font-display font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 border border-emerald-500/40"
+                        >
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>{perkClaimed ? 'Perk Applied! ✓' : 'Add to Reservation'}</span>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}

@@ -72,7 +72,7 @@ export const InteractiveShishaBlender: React.FC<InteractiveShishaBlenderProps> =
           <h2 className="text-3xl sm:text-5xl font-display font-bold text-white tracking-tight">
             Craft Your Signature <span className="text-gold-gradient">Mauri Blend</span>
           </h2>
-          <p className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+          <p className="mt-4 text-slate-200 text-sm sm:text-base leading-relaxed font-sans">
             Mix up to three artisan flavors, watch the ethereal hookah flask react in real-time, and lock in your bespoke recipe for tonight’s session.
           </p>
         </div>
@@ -96,8 +96,8 @@ export const InteractiveShishaBlender: React.FC<InteractiveShishaBlenderProps> =
 
               {/* Top Badge: Custom Mix Name */}
               <div className="w-full text-center z-10">
-                <span className="text-[10px] uppercase font-display tracking-[0.25em] text-slate-400">Custom Vapor Profile</span>
-                <h4 className="text-lg font-display font-bold text-white mt-0.5 truncate">{blendName}</h4>
+                <span className="text-xs uppercase font-display tracking-[0.2em] text-mauri-gold/90 font-semibold">Custom Vapor Profile</span>
+                <h4 className="text-lg font-display font-bold text-white mt-1 truncate">{blendName}</h4>
               </div>
 
               {/* Center: Stylized Mauri Shisha SVG with Animated Vapor */}
@@ -172,17 +172,17 @@ export const InteractiveShishaBlender: React.FC<InteractiveShishaBlenderProps> =
               </div>
 
               {/* Bottom Blend Stats */}
-              <div className="w-full z-10 bg-obsidian-950/80 rounded-xl p-3 border border-white/5 space-y-2">
+              <div className="w-full z-10 bg-obsidian-950/90 rounded-2xl p-4 border border-white/10 space-y-2.5 backdrop-blur-md shadow-xl">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="flex items-center gap-1.5 text-slate-400">
-                    <Droplets className="w-3.5 h-3.5 text-pink-400" /> Sweetness
+                  <span className="flex items-center gap-1.5 text-slate-300 font-sans font-medium">
+                    <Droplets className="w-3.5 h-3.5 text-pink-400" /> Sweetness Profile
                   </span>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1.5">
                     {[1, 2, 3, 4, 5].map((i) => (
                       <span
                         key={i}
-                        className={`w-3.5 h-1.5 rounded-full ${
-                          i <= avgSweetness ? 'bg-pink-500 shadow-sm shadow-pink-500/50' : 'bg-slate-800'
+                        className={`w-4 h-2 rounded-full transition-all duration-300 ${
+                          i <= avgSweetness ? 'bg-gradient-to-r from-pink-500 to-rose-400 shadow-sm shadow-pink-500/50' : 'bg-slate-850 border border-white/5'
                         }`}
                       />
                     ))}
@@ -190,15 +190,15 @@ export const InteractiveShishaBlender: React.FC<InteractiveShishaBlenderProps> =
                 </div>
 
                 <div className="flex items-center justify-between text-xs">
-                  <span className="flex items-center gap-1.5 text-slate-400">
-                    <Wind className="w-3.5 h-3.5 text-cyan-400" /> Coolness Frost
+                  <span className="flex items-center gap-1.5 text-slate-300 font-sans font-medium">
+                    <Wind className="w-3.5 h-3.5 text-cyan-400" /> Coolness / Frost
                   </span>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1.5">
                     {[1, 2, 3, 4, 5].map((i) => (
                       <span
                         key={i}
-                        className={`w-3.5 h-1.5 rounded-full ${
-                          i <= avgCoolness ? 'bg-cyan-400 shadow-sm shadow-cyan-400/50' : 'bg-slate-800'
+                        className={`w-4 h-2 rounded-full transition-all duration-300 ${
+                          i <= avgCoolness ? 'bg-gradient-to-r from-cyan-400 to-sky-300 shadow-sm shadow-cyan-400/50' : 'bg-slate-850 border border-white/5'
                         }`}
                       />
                     ))}
@@ -206,15 +206,15 @@ export const InteractiveShishaBlender: React.FC<InteractiveShishaBlenderProps> =
                 </div>
 
                 <div className="flex items-center justify-between text-xs">
-                  <span className="flex items-center gap-1.5 text-slate-400">
-                    <Flame className="w-3.5 h-3.5 text-amber-400" /> Cloud Intensity
+                  <span className="flex items-center gap-1.5 text-slate-300 font-sans font-medium">
+                    <Flame className="w-3.5 h-3.5 text-amber-400" /> Cloud Density
                   </span>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1.5">
                     {[1, 2, 3, 4, 5].map((i) => (
                       <span
                         key={i}
-                        className={`w-3.5 h-1.5 rounded-full ${
-                          i <= avgStrength ? 'bg-amber-400 shadow-sm shadow-amber-400/50' : 'bg-slate-800'
+                        className={`w-4 h-2 rounded-full transition-all duration-300 ${
+                          i <= avgStrength ? 'bg-gradient-to-r from-amber-400 to-orange-400 shadow-sm shadow-amber-400/50' : 'bg-slate-850 border border-white/5'
                         }`}
                       />
                     ))}
@@ -225,18 +225,18 @@ export const InteractiveShishaBlender: React.FC<InteractiveShishaBlenderProps> =
 
             {/* Ice Tip Toggle */}
             <div className="mt-4 flex items-center justify-between w-full max-w-sm px-2">
-              <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-300">
+              <label className="flex items-center gap-2 cursor-pointer text-xs sm:text-sm text-slate-200 font-sans select-none hover:text-white transition-colors">
                 <input
                   type="checkbox"
                   checked={activeIceTip}
                   onChange={(e) => setActiveIceTip(e.target.checked)}
-                  className="rounded text-mauri-gold focus:ring-0 bg-obsidian-900 border-white/20 w-4 h-4 cursor-pointer"
+                  className="rounded text-mauri-gold focus:ring-mauri-gold/40 bg-obsidian-900 border-white/30 w-4 h-4 cursor-pointer accent-amber-500"
                 />
                 <span>Add Sub-Zero Ice Tip (Included Free)</span>
               </label>
               <button
                 onClick={handleRandomize}
-                className="text-xs text-mauri-gold hover:underline flex items-center gap-1 font-display"
+                className="text-xs text-mauri-gold hover:text-amber-300 flex items-center gap-1 font-display font-semibold transition-colors"
                 title="Randomize Flavor Blend"
               >
                 <RefreshCw className="w-3 h-3" /> Surprise Me
@@ -254,7 +254,7 @@ export const InteractiveShishaBlender: React.FC<InteractiveShishaBlenderProps> =
                     {selectedFlavors.length} / 3 Max
                   </span>
                 </h3>
-                <span className="text-xs text-slate-400">Click any flavor to toggle</span>
+                <span className="text-xs text-slate-300 font-sans">Click any flavor to toggle</span>
               </div>
 
               {/* Flavor Palette Grid */}
@@ -267,29 +267,29 @@ export const InteractiveShishaBlender: React.FC<InteractiveShishaBlenderProps> =
                       onClick={() => toggleFlavor(flavor)}
                       className={`p-3.5 rounded-2xl cursor-pointer transition-all duration-300 flex items-start gap-3 relative ${
                         isSelected
-                          ? 'glass-card border-mauri-gold bg-mauri-gold/10 shadow-glass-gold'
-                          : 'glass-card border-white/5 hover:border-white/20 opacity-80 hover:opacity-100'
+                          ? 'glass-card border-mauri-gold bg-mauri-gold/15 shadow-glass-gold scale-[1.01]'
+                          : 'glass-card border-white/10 hover:border-white/25 opacity-90 hover:opacity-100 hover:-translate-y-0.5'
                       }`}
                     >
                       {/* Color Dot Indicator */}
                       <div
-                        className="w-4 h-4 rounded-full mt-0.5 shrink-0 shadow-sm"
+                        className="w-4 h-4 rounded-full mt-0.5 shrink-0 shadow-md ring-2 ring-white/10"
                         style={{ backgroundColor: flavor.baseColor }}
                       />
 
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
-                          <h4 className="text-sm font-semibold text-white truncate">{flavor.name}</h4>
+                          <h4 className="text-sm font-semibold text-white truncate font-sans">{flavor.name}</h4>
                           {isSelected ? (
                             <Check className="w-4 h-4 text-mauri-gold shrink-0" />
                           ) : (
-                            <Plus className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                            <Plus className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                           )}
                         </div>
-                        <p className="text-[11px] text-slate-400 mt-0.5 truncate">
+                        <p className="text-xs text-slate-300 mt-1 truncate font-sans">
                           {flavor.notes.join(' • ')}
                         </p>
-                        <span className="inline-block mt-1 text-[10px] uppercase font-display tracking-wider text-slate-400">
+                        <span className="inline-block mt-1.5 text-[10px] uppercase font-display tracking-wider text-slate-300">
                           {flavor.category}
                         </span>
                       </div>
@@ -300,15 +300,15 @@ export const InteractiveShishaBlender: React.FC<InteractiveShishaBlenderProps> =
             </div>
 
             {/* CTA: Preload into Reservation */}
-            <div className="glass-panel rounded-2xl p-5 border border-mauri-gold/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="glass-panel rounded-2xl p-5 border border-mauri-gold/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
               <div>
                 <span className="text-xs uppercase tracking-widest text-mauri-gold font-display font-semibold">
                   VIP Session Preparation
                 </span>
-                <h4 className="text-white font-medium text-base">
+                <h4 className="text-white font-medium text-base mt-0.5 font-display">
                   Ready to experience this recipe at Phantom Lounge?
                 </h4>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs sm:text-sm text-slate-300 mt-0.5 font-sans">
                   Pre-loads your recipe directly into your table reservation with zero delay.
                 </p>
               </div>

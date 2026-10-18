@@ -30,7 +30,9 @@ export const FAQSection: React.FC = () => {
             return (
               <div
                 key={faq.question}
-                className="glass-card rounded-2xl border border-white/5 overflow-hidden transition-all duration-300"
+                className={`glass-card rounded-2xl overflow-hidden transition-all duration-300 ${
+                  isOpen ? 'border border-mauri-gold/40 shadow-glass-gold' : 'border border-white/10 hover:border-white/25'
+                }`}
               >
                 <button
                   onClick={() => toggle(index)}

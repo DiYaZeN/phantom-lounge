@@ -58,9 +58,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             PHANTOM <span className="text-gold-gradient drop-shadow-2xl">LOUNGE</span>
           </h1>
 
-          <p className="mt-6 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-300 font-light leading-relaxed">
+          <p className="mt-6 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 font-normal leading-relaxed">
             Where ethereal shisha mastercraft meets personal Ludo gaming tables, velvety Karak chai, and unforgettable late-night luxury across{' '}
-            <span className="text-white font-medium underline decoration-mauri-gold underline-offset-4">
+            <span className="text-white font-semibold underline decoration-mauri-gold underline-offset-4">
               Leeds, Manchester & Bradford
             </span>.
           </p>
@@ -87,7 +87,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           <a
             href="#menu"
-            className="w-full sm:w-auto px-6 py-4 rounded-full font-display text-sm font-semibold tracking-wider uppercase text-slate-300 hover:text-white glass-pill hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-4 rounded-full font-display text-sm font-semibold tracking-wider uppercase text-slate-200 hover:text-white glass-pill hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
           >
             <span>View Full Menu</span>
             <span className="text-xs">↓</span>
@@ -95,7 +95,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
 
         {/* Live Lounge Status Card */}
-        <div className="w-full max-w-3xl glass-panel rounded-2xl p-4 sm:p-5 border border-white/10 shadow-glass">
+        <div className="w-full max-w-3xl glass-panel rounded-3xl p-5 sm:p-6 border border-white/15 shadow-glass">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
             {/* Stat 1 */}
             <div className="flex flex-col items-center justify-center text-center p-2">
@@ -103,7 +103,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <span>150+</span>
                 <Flame className="w-4 h-4 text-amber-500 animate-pulse" />
               </div>
-              <span className="text-xs text-slate-400 uppercase tracking-wider mt-1">Shisha Flavors</span>
+              <span className="text-xs text-slate-300 uppercase tracking-wider mt-1 font-medium font-sans">Shisha Flavors</span>
             </div>
 
             {/* Stat 2 */}
@@ -112,7 +112,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <span>FREE</span>
                 <Dices className="w-4 h-4 text-emerald-400" />
               </div>
-              <span className="text-xs text-slate-400 uppercase tracking-wider mt-1">Personal Ludo Boards</span>
+              <span className="text-xs text-slate-300 uppercase tracking-wider mt-1 font-medium font-sans">Personal Ludo Boards</span>
             </div>
 
             {/* Stat 3 */}
@@ -121,7 +121,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <span>3</span>
                 <MapPin className="w-4 h-4 text-mauri-gold" />
               </div>
-              <span className="text-xs text-slate-400 uppercase tracking-wider mt-1">Prime Locations</span>
+              <span className="text-xs text-slate-300 uppercase tracking-wider mt-1 font-medium font-sans">Prime Locations</span>
             </div>
 
             {/* Stat 4 */}
@@ -130,27 +130,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <span>5.0★</span>
                 <Award className="w-4 h-4 text-mauri-gold" />
               </div>
-              <span className="text-xs text-slate-400 uppercase tracking-wider mt-1">Customer Rated</span>
+              <span className="text-xs text-slate-300 uppercase tracking-wider mt-1 font-medium font-sans">Customer Rated</span>
             </div>
           </div>
 
           {/* Current City Highlight Strip */}
-          <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400 px-2">
+          <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-300 px-2 font-sans">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-white font-medium">Tonight at {currentCity.city}:</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-white font-semibold">Tonight at {currentCity.city}:</span>
               <span>Open until {currentCity.hours.weekends.split('–')[1]?.trim() || '3:30 AM'}</span>
             </div>
-            <div className="flex items-center gap-3">
-              <span>Switch Hub:</span>
+            <div className="flex items-center gap-2">
+              <span className="text-slate-400">Switch Hub:</span>
               {(['leeds', 'manchester', 'bradford'] as const).map((city) => (
                 <button
                   key={city}
                   onClick={() => onSelectCity(city)}
-                  className={`uppercase tracking-wider transition-colors ${
+                  className={`px-2.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider transition-all ${
                     selectedCity === city
-                      ? 'text-mauri-gold font-bold underline'
-                      : 'hover:text-white'
+                      ? 'bg-mauri-gold text-obsidian-950 font-bold shadow-sm'
+                      : 'bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white'
                   }`}
                 >
                   {city}
@@ -162,7 +162,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Scroll Indicator */}
         <div className="mt-10 animate-bounce">
-          <a href="#flavor-alchemy" className="text-slate-500 hover:text-mauri-gold transition-colors flex flex-col items-center gap-1">
+          <a href="#flavor-alchemy" className="text-slate-400 hover:text-mauri-gold transition-colors flex flex-col items-center gap-1">
             <span className="text-[10px] tracking-widest uppercase font-display">Experience The Vibe</span>
             <ChevronDown className="w-4 h-4" />
           </a>

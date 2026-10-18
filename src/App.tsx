@@ -68,7 +68,10 @@ export function App() {
         <InteractiveShishaBlender onPreloadMixToBooking={handlePreloadMix} />
 
         {/* Ludo Gaming Experience & 3D Dice Roller */}
-        <LudoExperienceSection onOpenBooking={handleOpenBooking} />
+        <LudoExperienceSection
+          onOpenBooking={handleOpenBooking}
+          onClaimPerk={handlePreloadMix}
+        />
 
         {/* Complete Sensory Gastronomy & Drinks Menu */}
         <MenuSection onPreloadMixToBooking={handlePreloadMix} />
